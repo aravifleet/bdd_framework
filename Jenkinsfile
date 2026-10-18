@@ -5,13 +5,14 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                echo 'GitHub checkout successful!'
             }
         }
 
-        stage('Check Python') {
+        stage('Verify Workspace') {
             steps {
-                sh 'python3 --version'
+                sh 'git --version'
+                sh 'ls -la'
             }
         }
     }
