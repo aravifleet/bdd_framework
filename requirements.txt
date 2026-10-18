@@ -3,6 +3,7 @@ pytest
 pytest-bdd
 pytest-html
 pytest-xdist
-playwright
+playwright==1.62.0
 mysql-connector-python
 requests
+Jenkinsfile
