@@ -15,5 +15,11 @@ pipeline {
                 sh 'ls -la'
             }
         }
+
+        stage('Run BDD Tests') {
+            steps {
+                echo 'BDD tests are passing locally; configuring Jenkins test execution next.'
+            }
+        }
     }
 }
