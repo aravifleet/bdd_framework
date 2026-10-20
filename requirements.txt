@@ -6,4 +6,4 @@ pytest-xdist
 playwright==1.62.0
 mysql-connector-python
 requests
-Jenkinsfile
+
