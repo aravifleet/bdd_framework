@@ -9,21 +9,26 @@ pipeline {
             }
         }
 
-        stage('Verify Workspace') {
+        stage('Verify Environment') {
             steps {
                 sh 'git --version'
-                sh 'ls -la'
                 sh 'python3 --version'
+                sh 'echo "Browser path: $PLAYWRIGHT_BROWSERS_PATH"'
+                sh 'ls -la "$PLAYWRIGHT_BROWSERS_PATH"'
             }
         }
 
-        stage('Run BDD Tests') {
+        stage('Install Dependencies') {
             steps {
                 sh 'python3 -m venv .venv'
                 sh '.venv/bin/python -m pip install --upgrade pip'
                 sh '.venv/bin/python -m pip install -r requirements.txt'
-                sh '.venv/bin/python -m playwright --version'
-                sh '.venv/bin/python -m playwright install --list'
+            }
+        }
+
+        stage('Discover Tests') {
+            steps {
+                sh '.venv/bin/python -m pytest --collect-only -q'
             }
         }
     }
