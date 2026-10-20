@@ -19,7 +19,7 @@ pipeline {
 
         stage('Run BDD Tests') {
             steps {
-                echo 'BDD tests are passing locally; configuring Jenkins test execution next.'
+                sh 'python3 -m venv .venv'
             }
         }
     }
