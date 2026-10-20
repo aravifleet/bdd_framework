@@ -26,9 +26,14 @@ pipeline {
             }
         }
 
-        stage('Discover Tests') {
+        stage('Run BDD Tests') {
             steps {
-                sh '.venv/bin/python -m pytest --collect-only -q'
+                sh '.venv/bin/python -m pytest -v tests/ --html=report.html --self-contained-html'
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: 'report.html', allowEmptyArchive: true
+                }
             }
         }
     }
