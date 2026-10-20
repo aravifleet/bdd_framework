@@ -13,6 +13,7 @@ pipeline {
             steps {
                 sh 'git --version'
                 sh 'ls -la'
+                sh 'python3 --version'
             }
         }
 
