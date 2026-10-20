@@ -8,6 +8,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN python3 -m pip install --break-system-packages playwright==1.62.0 \
-    && python3 -m playwright install-deps
+    && python3 -m playwright install-deps \
+    && python3 -m playwright install chromium firefox webkit
 
 USER jenkins
